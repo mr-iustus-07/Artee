@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* ---- ARTEE light palette -------------------------------------------
+     Warm gallery paper, ink, and a sanguine (red-chalk) accent drawn
+     from classical figure-drawing pigments — grounded in the artist's
+     own graphite/portrait practice rather than a generic brand palette.
+  ------------------------------------------------------------------- */
+  --paper: 42 24% 95%;
+  --surface: 40 20% 91%;
+  --ink: 30 10% 12%;
+  --muted: 30 6% 40%;
+  --border: 40 15% 85%;
+  --sanguine: 8 55% 40%;
+  --sanguine-ink: 8 60% 30%;
+}
+
+.dark {
+  /* ---- ARTEE dark palette — warm near-black, not pure black -------- */
+  --paper: 30 8% 8%;
+  --surface: 30 8% 13%;
+  --ink: 40 15% 92%;
+  --muted: 30 6% 62%;
+  --border: 30 10% 20%;
+  --sanguine: 8 62% 54%;
+  --sanguine-ink: 8 65% 62%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: hsl(var(--paper));
+  color: hsl(var(--ink));
+  font-feature-settings: "ss01" 1, "kern" 1;
+}
+
+::selection {
+  background-color: hsl(var(--sanguine) / 0.22);
+  color: hsl(var(--ink));
+}
+
+:focus-visible {
+  outline: 2px solid hsl(var(--sanguine));
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Editorial eyebrow / metadata label used throughout the public site */
+.eyebrow {
+  @apply text-[11px] font-medium uppercase tracking-widest2 text-muted;
+}
+
+.container-artee {
+  @apply mx-auto w-full max-w-8xl px-6 md:px-10 lg:px-16;
+}
