@@ -1,16 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getArtworkBySlug, getPublishedArtworks, getSiteSettings } from "@/lib/queries";
+import { getArtworkBySlug, getSiteSettings } from "@/lib/queries";
 import { ProcessStrip } from "@/components/public/process-strip";
 import { WhatsAppButton } from "@/components/public/whatsapp-button";
 import { SectionHeading } from "@/components/public/section-heading";
 import { artworkEnquiryMessage } from "@/lib/whatsapp";
 
-export async function generateStaticParams() {
-  const artworks = await getPublishedArtworks();
-  return artworks.map((a) => ({ slug: a.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
